@@ -1,5 +1,6 @@
 class GetSetData
     # method to move robot from 1 unit in current direction and if in the range of table dimensions
+	# Parameters:  x: x co-ordinate, y: y co-ordinate, dir: input direction
 	def move_robot(x, y, dir)
 				x_dir = x.to_i
 		y_dir = y.to_i
@@ -23,6 +24,7 @@ class GetSetData
 	end
 		
     # method to change direction of the robot left or right		
+	# Parameters:  x: x co-ordinate, y: y co-ordinate, dir: input direction, move: movement direction
 	def change_direction(x, y, dir, move)
 		new_dir = dir
 		case dir

@@ -16,7 +16,7 @@ class Command
 				puts "Place the Robot first"
 			else
 				case command
-				# PLACE command to place the robot at some location with direction
+				# PLACE: command to place the robot at input location with direction
 				when "PLACE" 
 				       dir = full_string[1].split(',')[2].upcase
 					   x_val = full_string[1].split(',')[0].to_i
@@ -28,7 +28,7 @@ class Command
 					else
 						puts "Invalid Arguments"
 					end
-				# MOVE command to move robot by 1 unit in the direction it is facing
+				# MOVE: command to move robot by 1 unit in the direction it is facing
 				when "MOVE"
 					result_hash = GetSetData.new.move_robot(@data_hash["dimensions"]["x"],@data_hash["dimensions"]["y"],@data_hash["direction"])
 					if result_hash["direction"] == "outside"
@@ -36,13 +36,13 @@ class Command
 					else
 						set_hash_data(result_hash);
 					end
-				# change direction of robot to left from current direction
+				# LEFT : change direction of robot to left from current direction
 				when "LEFT"
 					set_hash_data(GetSetData.new.change_direction(@data_hash["dimensions"]["x"],@data_hash["dimensions"]["y"],@data_hash["direction"],"LEFT"))
-				# change direction of robot to right from current direction
+				# RIGHT : change direction of robot to right from current direction
 				when "RIGHT"
 					set_hash_data(GetSetData.new.change_direction(@data_hash["dimensions"]["x"],@data_hash["dimensions"]["y"],@data_hash["direction"], "RIGHT"))
-				# Show current location and direction of the robot
+				# REPORT : Show current location and direction of the robot
 				when "REPORT"
 					puts @data_hash["dimensions"]["x"].to_s+ ","+ @data_hash["dimensions"]["y"].to_s+","+@data_hash["direction"];
 				else
@@ -61,4 +61,5 @@ class Command
 				@data_hash = input;
 	end # end set_hash_data
 end
+# Class initialising
 Command.new.get_command
